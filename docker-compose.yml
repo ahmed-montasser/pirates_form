@@ -3,6 +3,7 @@ version: '3.8'
 services:
   app:
     build: .
+    container_name: pirates-form
     ports:
       - 40000:8000
     env_file:
