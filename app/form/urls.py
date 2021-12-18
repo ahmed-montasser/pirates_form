@@ -39,16 +39,6 @@ urlpatterns = [
     ),
     path("applicants_list/", ApplicantListView.as_view(), name="Applicant List"),
     path("slots_list/", TimeSlot_ListView.as_view(), name="TimeSlot List"),
-    path("slots_create/", TimeSlot_CreateView.as_view(), name="TimeSlot Create"),
-    path(
-        "slots_delete/<int:pk>/", TimeSlot_DeleteView.as_view(), name="TimeSlot Delete"
-    ),
-    path("slots_edit/<int:pk>/", TimeSlot_EditView.as_view(), name="TimeSlot Update"),
-    path(
-        "applicants_edit/<int:pk>/",
-        ApplicantAdmin_EditView.as_view(),
-        name="Applicant Edit",
-    ),
     path(
         "applicants_interviewed_list/",
         ApplicantInterviewedListView.as_view(),
@@ -59,13 +49,6 @@ urlpatterns = [
         ApplicantNonInterviewedListView.as_view(),
         name="Applicant Not Interviewed List",
     ),
-    path("faculties_edit/<int:pk>/", Faculty_EditView.as_view(), name="Faculty Update"),
-    path("faculties_create/", Faculty_CreateView.as_view(), name="Faculty Create"),
-    path(
-        "univ_edit/<int:pk>/", University_EditView.as_view(), name="University Update"
-    ),
-    path("univ_create/", University_CreateView.as_view(), name="University Create"),
-    path("high_b_oard/", AdminView.as_view(), name="Admin Panel"),
     path("", RedirectView.as_view()),
     path("univ_list/", UniversityListView.as_view(), name="University List"),
 ]
