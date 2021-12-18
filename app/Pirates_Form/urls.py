@@ -19,6 +19,6 @@ from django.views.generic import TemplateView
 from form.views import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('form/', include('form.urls', namespace='Pirates Form')),
+    path("admin/", admin.site.urls),
+    path("form/", include("form.urls", namespace="Pirates Form")),
 ]

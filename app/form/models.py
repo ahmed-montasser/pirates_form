@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Faculty(models.Model):
     faculty = models.CharField(max_length=200, null=False, blank=False, unique=True)
 
@@ -11,9 +12,8 @@ class Faculty(models.Model):
 
 
 class University(models.Model):
-    university = models.CharField(max_length=200, null=False, blank=False, unique=True
-                                  )
-    faculties = models.ManyToManyField('Faculty')
+    university = models.CharField(max_length=200, null=False, blank=False, unique=True)
+    faculties = models.ManyToManyField("Faculty")
 
     def __str__(self):
         return self.university
@@ -25,7 +25,7 @@ class TimeSlot(models.Model):
     capacity = models.IntegerField(default=20)
 
     def __str__(self):
-        return '{}|{}'.format(self.time, self.date)
+        return "{}|{}".format(self.time, self.date)
 
 
 class FormApplierModel(models.Model):
@@ -47,4 +47,4 @@ class FormApplierModel(models.Model):
     data_created = models.DateTimeField(auto_now_add=True, null=False)
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return "{} {}".format(self.first_name, self.last_name)

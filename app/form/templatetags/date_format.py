@@ -7,8 +7,7 @@ register = template.Library()
 
 @register.filter
 def date2day(a):
-    return datetime.strptime(str(a), '%Y-%m-%d').strftime('%A')
-
+    return datetime.strptime(str(a), "%Y-%m-%d").strftime("%A")
 
 
 @register.filter
