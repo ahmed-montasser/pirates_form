@@ -17,7 +17,7 @@
         <th>1st preference</th>
         <th>2nd preference</th>
         <th>Time Slot</th>
-        <th>Options</th>
+    
     </tr>
     {% for formappliermodel in formappliermodel_list %}
         {% if not formappliermodel.is_interviewed %}
@@ -44,9 +44,7 @@
             <td>{{ formappliermodel.first_preference}}</td>
             <td>{{ formappliermodel.second_preference}}</td>
             <td>{{ formappliermodel.time_slot.date|date2day}} -- {{ formappliermodel.time_slot.date}} -- {{ formappliermodel.time_slot.time }}  </td>
-        <td>
-                <a href="{% url 'Pirates Form:Applicant Edit' formappliermodel.id %}">Edit</a>
-            </td>
+        
         </tr>
         {% endif %}
     {% endfor %}
