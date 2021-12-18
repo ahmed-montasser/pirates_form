@@ -1,0 +1,24 @@
+{% extends 'form/base_list.html' %}
+
+<h2>{% block content %}University Table{% endblock %}</h2>
+
+{% block content2 %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>University</th>
+        <th>    Options    </th>
+
+    </tr>
+    {% for entry in university_list %}
+        <tr>
+           <td>{{ entry.id }}</td>
+        <td>{{ entry.university }}</td>
+        <td><a href="{% url 'Pirates Form:University Update' entry.id %}">Edit</a></td>
+        </tr>
+    {% endfor %}
+
+</table>
+        </br>
+    <a href="{% url 'Pirates Form:Admin Panel' %}">Admin Panel</a>
+{% endblock %}

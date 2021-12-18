@@ -1,0 +1,73 @@
+{% extends 'form/base_list.html' %}
+{% load date_format %}
+
+
+<h2>{% block content %}Applicants Table{% endblock %}</h2>
+{% block content2 %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Remaining Capacity</th>
+        <th>Names</th>
+        <th>Mobile Phones</th>
+        <th>1st preference</th>
+        <th>2nd preference</th>
+        <th>    Options    </th>
+
+    </tr>
+    {% for entry in timeslot_applicants %}
+        <tr>
+            <td>{{ entry.timeslot.id }}</td>
+            <td>{{ entry.timeslot.date|date2day }} --- {{ entry.timeslot.date }}</td>
+            <td>{{ entry.timeslot.time }}</td>
+            <td>{{ entry.timeslot.capacity }}</td>
+            <td>
+                <ul>
+                    {% for applicant in entry.applicants %}
+                        <li>
+                            {{ applicant.first_name }} {{ applicant.last_name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for applicant in entry.applicants %}
+                        <li>
+                            {{ applicant.mobile_number }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for applicant in entry.applicants %}
+                        <li>
+                            {{ applicant.first_preference }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+
+            <td>
+                <ul>
+                    {% for applicant in entry.applicants %}
+                        <li>
+                            {{ applicant.second_preference }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+        <td>
+                <a href="{% url 'Pirates Form:TimeSlot Update' entry.timeslot.id %}">Edit</a> | <a href="{% url 'Pirates Form:TimeSlot Delete' entry.timeslot.id %}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+        </br>
+    <a href="{% url 'Pirates Form:Admin Panel' %}">Admin Panel</a>
+{% endblock %}
+
