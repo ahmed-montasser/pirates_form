@@ -14,7 +14,7 @@
         <th>Mobile Phones</th>
         <th>1st preference</th>
         <th>2nd preference</th>
-        <th>    Options    </th>
+      
 
     </tr>
     {% for entry in timeslot_applicants %}
@@ -60,9 +60,7 @@
                     {% endfor %}
                 </ul>
             </td>
-        <td>
-                <a href="{% url 'Pirates Form:TimeSlot Update' entry.timeslot.id %}">Edit</a> | <a href="{% url 'Pirates Form:TimeSlot Delete' entry.timeslot.id %}">Delete</a>
-            </td>
+     
         </tr>
     {% endfor %}
 
