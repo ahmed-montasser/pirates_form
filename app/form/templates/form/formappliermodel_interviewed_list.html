@@ -9,7 +9,7 @@
     <tr>
         <th>Name</th>
         <th>Email</th>
-        <th>Mobile Phone</th>
+        
         <th>University</th>
         <th>Faculty</th>
         <th>Department</th>
@@ -24,7 +24,7 @@
         <tr>
             <td>{{ formappliermodel.first_name }} {{ formappliermodel.last_name }}</td>
             <td>{{ formappliermodel.email }}</td>
-            <td>{{ formappliermodel.mobile_number }}</td>
+            
             {% if formappliermodel.university == null %}
                 <td>{{ formappliermodel.university_other }}</td>
             {% else %}
