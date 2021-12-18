@@ -31,4 +31,4 @@ COPY . .
 EXPOSE 8000
 
 # run app
-CMD dockerize -wait tcp://db:5432 -timeout 60m python app/manage.py migrate && python app/manage.py runserver 0.0.0.0:8000
+CMD dockerize -wait tcp://db:5432 -timeout 60m python app/manage.py migrate && python app/manage.py collectstatic && python app/manage.py runserver 0.0.0.0:8000
