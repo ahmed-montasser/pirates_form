@@ -131,27 +131,27 @@ class UniversityFacultyALLView(View):
             return None
 
 
-class UniversityListView(ListView, LoginRequiredMixin):
+class UniversityListView( LoginRequiredMixin,ListView):
     model = University
     template_name = "form/university_list.html"
 
 
-class ApplicantListView(ListView, LoginRequiredMixin):
+class ApplicantListView(LoginRequiredMixin,ListView):
     model = FormApplierModel
     template_name = "form/formappliermodel_list.html"
 
 
-class ApplicantNonInterviewedListView(ListView, LoginRequiredMixin):
+class ApplicantNonInterviewedListView(LoginRequiredMixin,ListView):
     model = FormApplierModel
     template_name = "form/formappliermodel_non_interviewed_list.html"
 
 
-class ApplicantInterviewedListView(ListView, LoginRequiredMixin):
+class ApplicantInterviewedListView(LoginRequiredMixin,ListView):
     model = FormApplierModel
     template_name = "form/formappliermodel_interviewed_list.html"
 
 
-class TimeSlot_ListView(View, LoginRequiredMixin):
+class TimeSlot_ListView(LoginRequiredMixin,View):
     def get(self, request):
         timeslot_list = TimeSlot.objects.all()
         timeslot_applicants = []
@@ -241,6 +241,6 @@ class RedirectView(View):
         return redirect(reverse_lazy("Pirates Form:Recruitment Form"))
 
 
-class AdminView(View, LoginRequiredMixin):
+class AdminView(LoginRequiredMixin,View):
     def get(self, request):
         return render(request=request, template_name="form/admin_panel.html")
