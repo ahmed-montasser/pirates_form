@@ -11,7 +11,7 @@ from .models import University, Faculty, TimeSlot, FormApplierModel
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from .forms import ApplicantsForm
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -131,27 +131,27 @@ class UniversityFacultyALLView(View):
             return None
 
 
-class UniversityListView(ListView):
+class UniversityListView(ListView, LoginRequiredMixin):
     model = University
     template_name = "form/university_list.html"
 
 
-class ApplicantListView(ListView):
+class ApplicantListView(ListView, LoginRequiredMixin):
     model = FormApplierModel
     template_name = "form/formappliermodel_list.html"
 
 
-class ApplicantNonInterviewedListView(ListView):
+class ApplicantNonInterviewedListView(ListView, LoginRequiredMixin):
     model = FormApplierModel
     template_name = "form/formappliermodel_non_interviewed_list.html"
 
 
-class ApplicantInterviewedListView(ListView):
+class ApplicantInterviewedListView(ListView, LoginRequiredMixin):
     model = FormApplierModel
     template_name = "form/formappliermodel_interviewed_list.html"
 
 
-class TimeSlot_ListView(View):
+class TimeSlot_ListView(View, LoginRequiredMixin):
     def get(self, request):
         timeslot_list = TimeSlot.objects.all()
         timeslot_applicants = []
@@ -241,6 +241,6 @@ class RedirectView(View):
         return redirect(reverse_lazy("Pirates Form:Recruitment Form"))
 
 
-class AdminView(View):
+class AdminView(View, LoginRequiredMixin):
     def get(self, request):
         return render(request=request, template_name="form/admin_panel.html")
