@@ -21,4 +21,5 @@ from form.views import RedirectView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("form/", include("form.urls", namespace="Pirates Form")),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

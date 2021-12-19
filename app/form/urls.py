@@ -19,7 +19,7 @@ urlpatterns = [
     path("recruitment_form/", FormView.as_view(), name="Recruitment Form"),
     path("thank_you/", ThankYou_View.as_view(), name="Thank You"),
 
-    path('accounts/', include('django.contrib.auth.urls')),
+    
     # For Admins
     path(
         "faculty_university/<int:u_id>/",
