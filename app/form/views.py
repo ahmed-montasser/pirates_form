@@ -165,7 +165,7 @@ class TimeSlot_ListView(LoginRequiredMixin,View):
         )
 
 
-class ApplicantAdmin_EditView(View):
+class ApplicantAdmin_EditView(LoginRequiredMixin,View):
     def get(self, request, pk):
         f = get_object_or_404(FormApplierModel, id=pk)
         form = ApplicantsForm(instance=f)
@@ -187,21 +187,21 @@ class ApplicantAdmin_EditView(View):
         return redirect(reverse_lazy("Pirates Form:Applicant List"))
 
 
-class TimeSlot_CreateView(CreateView):
+class TimeSlot_CreateView(LoginRequiredMixin,CreateView):
     model = TimeSlot
     fields = "__all__"
     template_name = "form/slots_watch.html"
     success_url = reverse_lazy("Pirates Form:TimeSlot List")
 
 
-class TimeSlot_EditView(UpdateView):
+class TimeSlot_EditView(LoginRequiredMixin,UpdateView):
     model = TimeSlot
     fields = "__all__"
     template_name = "form/slots_watch.html"
     success_url = reverse_lazy("Pirates Form:TimeSlot List")
 
 
-class TimeSlot_DeleteView(DeleteView):
+class TimeSlot_DeleteView(LoginRequiredMixin,DeleteView):
     model = TimeSlot
     fields = "__all__"
     template_name = "form/timeslot_confirm_delete.html"

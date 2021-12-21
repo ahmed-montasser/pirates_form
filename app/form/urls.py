@@ -11,6 +11,11 @@ from .views import (
     AdminView,
     ThankYou_View,
     UniversityListView,
+    ApplicantAdmin_EditView,
+    TimeSlot_EditView,
+    TimeSlot_DeleteView,
+    TimeSlot_CreateView,
+
 )
 
 app_name = "Form"
@@ -46,4 +51,8 @@ urlpatterns = [
     path("", RedirectView.as_view()),
     path("univ_list/", UniversityListView.as_view(), name="University List"),
     path('high_b_oard/', AdminView.as_view(), name='Admin Panel'), 
+    path('slots_create/', TimeSlot_CreateView.as_view(), name='TimeSlot Create'),
+    path('slots_delete/<int:pk>/', TimeSlot_DeleteView.as_view(), name='TimeSlot Delete'),
+    path('slots_edit/<int:pk>/', TimeSlot_EditView.as_view(), name='TimeSlot Update'),
+path('applicants_edit/<int:pk>/', ApplicantAdmin_EditView.as_view(), name='Applicant Edit'),
 ]
