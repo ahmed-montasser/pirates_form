@@ -19,5 +19,7 @@ class ApplicantsForm(ModelForm):
             "mobile_number",
             "first_preference",
             "second_preference",
+            "time_slot",
             "is_interviewed",
+
         ]
