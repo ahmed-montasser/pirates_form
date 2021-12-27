@@ -375,7 +375,7 @@
                 <!-- <option disabled selected value> -- select an option --</option> -->
                 <!-- {% for time_slot_item in time_slots %}
                     {% if time_slot_item.capacity > 0 and time_slot_item|check_past %} -->
-                    <option selected value={{ time_slots[0].id }} >{{ time_slots[0].date|date2day }}---{{ time_slots[0].date }}---{{ time_slots[0].time }}</option>
+                    <option selected value={{ time_slots.id }} >{{ time_slots.date|date2day }}---{{ time_slots.date }}---{{ time_slots.time }}</option>
                     <!-- {% endif %}
                 {% endfor %} -->
 
