@@ -369,15 +369,15 @@
                 </select>
             </div>
 
-        <div class="item" id="time_slots_section">
+        <div class="item" id="time_slots_section" hidden>
             <p>Time Slot<span class="required">*</span></p>
             <select name="time_slot" class="selections">
-                <option disabled selected value> -- select an option --</option>
-                {% for time_slot_item in time_slots %}
-                    {% if time_slot_item.capacity > 0 and time_slot_item|check_past %}
-                    <option value={{ time_slot_item.id }}>{{ time_slot_item.date|date2day }}---{{ time_slot_item.date }}---{{ time_slot_item.time }}</option>
-                    {% endif %}
-                {% endfor %}
+                <!-- <option disabled selected value> -- select an option --</option> -->
+                <!-- {% for time_slot_item in time_slots %}
+                    {% if time_slot_item.capacity > 0 and time_slot_item|check_past %} -->
+                    <option selected value={{ time_slots[0].id }} >{{ time_slots[0].date|date2day }}---{{ time_slots[0].date }}---{{ time_slots[0].time }}</option>
+                    <!-- {% endif %}
+                {% endfor %} -->
 
             </select>
         </div>
