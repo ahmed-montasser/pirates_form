@@ -21,7 +21,7 @@ from .views import (
 app_name = "Form"
 
 urlpatterns = [
-    path("recruitment_form/", FormView.as_view(), name="Recruitment Form"),
+    path("recruitment_form/", ThankYou_View.as_view(), name="Recruitment Form"),
     path("thank_you/", ThankYou_View.as_view(), name="Thank You"),
 
     
