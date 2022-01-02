@@ -11,6 +11,7 @@ services:
 
   db:
     image: postgres:13.0-alpine
+    container_name: pirates-form-postgres
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
     environment:
