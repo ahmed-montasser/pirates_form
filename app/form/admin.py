@@ -1,5 +1,5 @@
 from django.contrib import admin
-from form.models import University, FormApplierModel, Faculty, TimeSlot
+from form.models import University, FormApplierModel, Faculty
 
 # Register your models here.
 
