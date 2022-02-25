@@ -4,7 +4,7 @@ from .views import (
     UniversityFacultyView,
     UniversityFacultyALLView,
     ApplicantListView,
-    TimeSlot_ListView,
+
     ApplicantInterviewedListView,
     ApplicantNonInterviewedListView,
     RedirectView,
@@ -12,16 +12,14 @@ from .views import (
     ThankYou_View,
     UniversityListView,
     ApplicantAdmin_EditView,
-    TimeSlot_EditView,
-    TimeSlot_DeleteView,
-    TimeSlot_CreateView,
+
 
 )
 
 app_name = "Form"
 
 urlpatterns = [
-    path("recruitment_form/", ThankYou_View.as_view(), name="Recruitment Form"),
+    path("recruitment_form/", FormView.as_view(), name="Recruitment Form"),
     path("thank_you/", ThankYou_View.as_view(), name="Thank You"),
 
     
