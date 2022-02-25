@@ -19,13 +19,13 @@ class University(models.Model):
         return self.university
 
 
-class TimeSlot(models.Model):
-    time = models.TimeField()
-    date = models.DateField()
-    capacity = models.IntegerField(default=20)
+# class TimeSlot(models.Model):
+#     time = models.TimeField()
+#     date = models.DateField()
+#     capacity = models.IntegerField(default=20)
 
-    def __str__(self):
-        return "{}|{}".format(self.time, self.date)
+#     def __str__(self):
+#         return "{}|{}".format(self.time, self.date)
 
 
 class FormApplierModel(models.Model):
@@ -40,10 +40,10 @@ class FormApplierModel(models.Model):
     department = models.CharField(max_length=50, null=True)
     department_other = models.CharField(max_length=100, null=True)
     academic_year = models.CharField(max_length=50)
-    first_preference = models.CharField(max_length=50)
-    second_preference = models.CharField(max_length=50)
-    time_slot = models.ForeignKey(TimeSlot, on_delete=models.SET_NULL, null=True)
-    is_interviewed = models.BooleanField(default=0)
+    # first_preference = models.CharField(max_length=50)
+    # second_preference = models.CharField(max_length=50)
+    # time_slot = models.ForeignKey(TimeSlot, on_delete=models.SET_NULL, null=True)
+    do_Attend = models.BooleanField(default=0)
     data_created = models.DateTimeField(auto_now_add=True, null=False)
 
     def __str__(self):

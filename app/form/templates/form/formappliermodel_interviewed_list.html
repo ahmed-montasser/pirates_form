@@ -14,9 +14,9 @@
         <th>Faculty</th>
         <th>Department</th>
         <th>Academic Year</th>
-        <th>1st preference</th>
-        <th>2nd preference</th>
-        <th>Time Slot</th>
+        <!-- <th>1st preference</th>
+        <th>2nd preference</th> -->
+        <!-- <th>Time Slot</th> -->
         
         <th>Options</th>
        
@@ -43,9 +43,9 @@
                 <td>{{ formappliermodel.department }}</td>
             {% endif %}
         <td>{{ formappliermodel.academic_year }}</td>
-            <td>{{ formappliermodel.first_preference}}</td>
+            <!-- <td>{{ formappliermodel.first_preference}}</td>
             <td>{{ formappliermodel.second_preference}}</td>
-            <td>{{ formappliermodel.time_slot.date|date2day}} -- {{ formappliermodel.time_slot.date}} -- {{ formappliermodel.time_slot.time }}  </td>
+            <td>{{ formappliermodel.time_slot.date|date2day}} -- {{ formappliermodel.time_slot.date}} -- {{ formappliermodel.time_slot.time }}  </td> -->
             <td><a href="{% url 'Pirates Form:Applicant Edit' formappliermodel.id %}">Edit</a></td>
          
         </tr>

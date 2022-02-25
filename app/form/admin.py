@@ -6,4 +6,4 @@ from form.models import University, FormApplierModel, Faculty, TimeSlot
 admin.site.register(FormApplierModel)
 admin.site.register(University)
 admin.site.register(Faculty)
-admin.site.register(TimeSlot)
+# admin.site.register(TimeSlot)

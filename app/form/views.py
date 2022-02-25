@@ -7,11 +7,14 @@ from django.views.generic import (
     UpdateView,
     CreateView,
 )
+
+from Form.pirates_form.app.form.HelperMethods.emailCode import sendEmail
 from .models import University, Faculty, TimeSlot, FormApplierModel
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from .forms import ApplicantsForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+import HelperMethods.emailCode
 
 # Create your views here.
 
@@ -19,8 +22,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class FormView(View):
     def get(self, request):
         universities = University.objects.all()
-        time_slots = TimeSlot.objects.all().first()
-        ctx = {"universities": universities, "time_slots": time_slots}
+        # time_slots = TimeSlot.objects.all().first()
+        ctx = {"universities": universities}
         error_message = request.session.get("error_message", False)
         if error_message:
             ctx["error_message"] = error_message
@@ -46,20 +49,20 @@ class FormView(View):
 
             applicant_department = request.POST.get("department", False)
 
-            applicant_first_preference = request.POST.get("first_preference", None)
-            applicant_second_preference = request.POST.get("second_preference", None)
-            applicant_time_slot_id = request.POST.get("time_slot", None)
+            # applicant_first_preference = request.POST.get("first_preference", None)
+            # applicant_second_preference = request.POST.get("second_preference", None)
+            # applicant_time_slot_id = request.POST.get("time_slot", None)
             applicant_academic_year = request.POST.get("academic_year", None)
 
-            t = get_object_or_404(TimeSlot, id=int(applicant_time_slot_id))
+            # t = get_object_or_404(TimeSlot, id=int(applicant_time_slot_id))
             f = FormApplierModel(
                 first_name=applicant_first_name,
                 last_name=applicant_last_name,
                 email=applicant_email,
                 mobile_number=applicant_mobile_number,
-                first_preference=applicant_first_preference,
-                second_preference=applicant_second_preference,
-                time_slot=t,
+                # first_preference=applicant_first_preference,
+                # second_preference=applicant_second_preference,
+                # time_slot=t,
                 academic_year=applicant_academic_year,
             )
 
@@ -91,8 +94,9 @@ class FormView(View):
 
             try:
                 f.save()
-                t.capacity -= 1
-                t.save()
+                sendEmail("Pirates Egypt Seminar QR Code", "", applicant_email, f'{applicant_first_name} {applicant_last_name}', reverse_lazy("Form:Applicant Edit", kwargs={'id':f.pk}))
+                # t.capacity -= 1
+                # t.save()
 
             except Exception as e:
                 request.session["error_message"] = "Check information provided"
@@ -151,18 +155,18 @@ class ApplicantInterviewedListView(LoginRequiredMixin,ListView):
     template_name = "form/formappliermodel_interviewed_list.html"
 
 
-class TimeSlot_ListView(LoginRequiredMixin,View):
-    def get(self, request):
-        timeslot_list = TimeSlot.objects.all()
-        timeslot_applicants = []
-        for timeslot in timeslot_list:
-            applicants = FormApplierModel.objects.filter(time_slot=timeslot)
-            timeslot_applicants.append({"timeslot": timeslot, "applicants": applicants})
+# class TimeSlot_ListView(LoginRequiredMixin,View):
+#     def get(self, request):
+#         timeslot_list = TimeSlot.objects.all()
+#         timeslot_applicants = []
+#         for timeslot in timeslot_list:
+#             applicants = FormApplierModel.objects.filter(time_slot=timeslot)
+#             timeslot_applicants.append({"timeslot": timeslot, "applicants": applicants})
 
-        ctx = {"timeslot_applicants": timeslot_applicants}
-        return render(
-            request=request, template_name="form/timeslot_list.html", context=ctx
-        )
+#         ctx = {"timeslot_applicants": timeslot_applicants}
+#         return render(
+#             request=request, template_name="form/timeslot_list.html", context=ctx
+#         )
 
 
 class ApplicantAdmin_EditView(LoginRequiredMixin,View):
@@ -187,25 +191,25 @@ class ApplicantAdmin_EditView(LoginRequiredMixin,View):
         return redirect(reverse_lazy("Pirates Form:Applicant List"))
 
 
-class TimeSlot_CreateView(LoginRequiredMixin,CreateView):
-    model = TimeSlot
-    fields = "__all__"
-    template_name = "form/slots_watch.html"
-    success_url = reverse_lazy("Pirates Form:TimeSlot List")
+# class TimeSlot_CreateView(LoginRequiredMixin,CreateView):
+#     model = TimeSlot
+#     fields = "__all__"
+#     template_name = "form/slots_watch.html"
+#     success_url = reverse_lazy("Pirates Form:TimeSlot List")
 
 
-class TimeSlot_EditView(LoginRequiredMixin,UpdateView):
-    model = TimeSlot
-    fields = "__all__"
-    template_name = "form/slots_watch.html"
-    success_url = reverse_lazy("Pirates Form:TimeSlot List")
+# class TimeSlot_EditView(LoginRequiredMixin,UpdateView):
+#     model = TimeSlot
+#     fields = "__all__"
+#     template_name = "form/slots_watch.html"
+#     success_url = reverse_lazy("Pirates Form:TimeSlot List")
 
 
-class TimeSlot_DeleteView(LoginRequiredMixin,DeleteView):
-    model = TimeSlot
-    fields = "__all__"
-    template_name = "form/timeslot_confirm_delete.html"
-    success_url = reverse_lazy("Pirates Form:TimeSlot List")
+# class TimeSlot_DeleteView(LoginRequiredMixin,DeleteView):
+#     model = TimeSlot
+#     fields = "__all__"
+#     template_name = "form/timeslot_confirm_delete.html"
+#     success_url = reverse_lazy("Pirates Form:TimeSlot List")
 
 
 class University_CreateView(CreateView):
