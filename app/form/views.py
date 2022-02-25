@@ -9,12 +9,12 @@ from django.views.generic import (
 )
 
 from Form.pirates_form.app.form.HelperMethods.emailCode import sendEmail
-from .models import University, Faculty, TimeSlot, FormApplierModel
+from .models import University, Faculty, FormApplierModel
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from .forms import ApplicantsForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-import HelperMethods.emailCode
+
 
 # Create your views here.
 
