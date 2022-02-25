@@ -94,7 +94,7 @@ class FormView(View):
 
             try:
                 f.save()
-                sendEmail("Pirates Egypt Seminar QR Code", "", applicant_email, f'{applicant_first_name} {applicant_last_name}', reverse_lazy("Form:Applicant Edit", kwargs={'id':f.pk}))
+                sendEmail("Pirates Egypt Seminar QR Code", "fool.zeet2012@gmail.com", applicant_email, f'{applicant_first_name} {applicant_last_name}', reverse_lazy("Form:Applicant Edit", kwargs={'id':f.pk}))
                 # t.capacity -= 1
                 # t.save()
 
