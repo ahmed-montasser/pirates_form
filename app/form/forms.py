@@ -8,7 +8,7 @@ class TimeSlotForm(Form):
     date = forms.DateField(required=True, input_formats="%Y-%m-%d")
     capacity = forms.IntegerField(min_value=1, required=True)
 
-
+#Thanks
 class ApplicantsForm(ModelForm):
     class Meta:
         model = FormApplierModel
