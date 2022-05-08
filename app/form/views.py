@@ -2,13 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import (
     ListView,
-    DetailView,
-    DeleteView,
     UpdateView,
     CreateView,
 )
 
-from Form.pirates_form.app.form.HelperMethods.emailCode import sendEmail
+from .emailCode import sendEmail
 from .models import University, Faculty, FormApplierModel
 from django.http import JsonResponse
 from django.urls import reverse_lazy
@@ -94,12 +92,13 @@ class FormView(View):
 
             try:
                 f.save()
-                sendEmail("Pirates Egypt Seminar QR Code", "fool.zeet2012@gmail.com", applicant_email, f'{applicant_first_name} {applicant_last_name}', reverse_lazy("Form:Applicant Edit", kwargs={'id':f.pk}))
+                sendEmail("Pirates Egypt Seminar QR Code", "fool.zeet2012@gmail.com", applicant_email, f'{applicant_first_name} {applicant_last_name}', reverse_lazy("Form:Applicant Edit", kwargs={'pk':f.pk}))
                 # t.capacity -= 1
                 # t.save()
 
             except Exception as e:
                 request.session["error_message"] = "Check information provided"
+                print(e)
                 return redirect(reverse_lazy("Pirates Form:Recruitment Form"))
 
             return redirect(reverse_lazy("Pirates Form:Thank You"))

@@ -34,3 +34,6 @@ def sendEmail(subject, from_address, to_address, name, url ):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login('fool.zeet2012@gmail.com', 'A7laDINO2016')
         smtp.send_message(emailMessage)
+
+if __name__ == '__main__':
+    pass
