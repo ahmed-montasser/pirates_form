@@ -344,13 +344,13 @@
                 <p>First Preference<span class="required">*</span></p>
                 <select name="first_preference" id="first_preference_sel" class="selections" required>
                     <option disabled selected value> -- select an option --</option>
-                    <option value="IT" id="IT_op1">IT - Information Technology</option>
-                    <!-- <option value="QM" id="QM_op1">QM - Quality Management</option> -->
-                    <!-- <option value="FR" id="FR_op1">FR - Fundraising</option> -->
-                    <!-- <option value="HR" id="HR_op1">HR - Human Resources</option> -->
-                    <option value="PR" id="PR_op1">PR - Public Relations</option>
-                    <option value="ADV" id="ADV_op1">ADV - Advertising</option>
-                    <option value="AC" id="AC_op1">AC - Academic Committee</option>
+                    <option value="B" id="B_op1">Business</option>
+                    <option value="M" id="M_op1">Marketing</option>
+                    <option value="PM" id="PM_op1">Project Management</option>
+                    <option value="HR" id="HR_op1">Human Resources</option>
+                    <option value="ADV" id="ADV_op1">Advertising</option>
+                    <option value="BD" id="BD_op1">Business Development</option>
+  
 
                 </select>
             </div>
@@ -358,23 +358,26 @@
                 <p>Second Preference<span class="required">*</span></p>
                 <select name="second_preference" id="second_preference_sel" class="selections" required>
                     <option disabled selected value> -- select an option --</option>
-                    <option value="IT" id="IT_op2">IT - Information Technology</option>
-                    <!-- <option value="QM" id="QM_op2">QM - Quality Management</option> -->
-                    <!-- <option value="FR" id="FR_op2">FR - Fundraising</option> -->
-                    <!-- <option value="HR" id="HR_op2">HR - Human Resources</option> -->
-                    <option value="PR" id="PR_op2">PR - Public Relations</option>
-                    <option value="ADV" id="ADV_op2">ADV - Advertising</option>
-                    <option value="AC" id="AC_op2">AC - Academic Committee</option>
+                    <option value="B" id="B_op2">Business</option>
+                    <option value="M" id="M_op2">Marketing</option>
+                    <option value="PM" id="PM_op2">Project Management</option>
+                    <option value="HR" id="HR_op2">Human Resources</option>
+                    <option value="ADV" id="ADV_op2">Advertising</option>
+                    <option value="BD" id="BD_op2">Business Development</option>
 
                 </select>
             </div>
 
         <div class="item" id="time_slots_section">
             <p>Time Slot<span class="required">*</span></p>
-            <select name="time_slot" class="selections">
-                
-                    <option selected value={{ time_slots.id }} >{{ time_slots.date|date2day }}---{{ time_slots.date }}---{{ time_slots.time }}</option>
+            <select name="time_slot" id="timeslot_sel" class="selections" required>
+                <option disabled selected value> -- select an option --</option>
+                {% for timeslot_item in time_slots %}
 
+                    <option value={{ timeslot_item.id }} >{{ timeslot_item.date|date2day }}---{{ timeslot_item.date }}---{{ timeslot_item.time }}</option>
+
+                {% endfor %}
+                    
 
             </select>
         </div>

@@ -19,7 +19,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class FormView(View):
     def get(self, request):
         universities = University.objects.all()
-        time_slots = TimeSlot.objects.all().first()
+        time_slots = TimeSlot.objects.all()
         ctx = {"universities": universities, "time_slots": time_slots}
         error_message = request.session.get("error_message", False)
         if error_message:
